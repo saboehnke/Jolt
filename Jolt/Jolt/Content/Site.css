@@ -1,0 +1,90 @@
+﻿body {
+    padding-bottom: 60px;
+	background-color: #e6e6e6;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.pad-top {
+    margin-top: 35px;
+}
+
+.logo { 
+	height: 100%;
+}
+
+.galleryImage {
+	width: 80%;
+	height: 80%;
+}
+
+.btn {
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #3CB0D6 !important;
+    border-color: #e6e6e6;
+}
+
+.listImage {
+	list-style: none;
+	margin-bottom: 25px;
+}
+
+.galleryGrid {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+.logoPanel {
+	border: 0;
+	background: none;
+}
+
+.logoPanelBody {
+	height: 40%;
+	width: 50%;
+}
+
+.homePanel, .servicesPanel, .aboutPanel, .signsPanel {
+	font-size: 125%;
+    background-color: #e6e6e6;
+}
+
+.panel {
+	border-color: #3CB0D6 !important;
+}
+
+.panel-heading {
+	background-color: #3CB0D6 !important;
+}
+
+.form-control {
+    width: 100% !important;
+    margin-bottom: 10px;
+}
+
+.float-right {
+    float: right;
+}
+
+.customWidth {
+    width: 50px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}

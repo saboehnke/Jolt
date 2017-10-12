@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/Images/icon.ico" />
+    <title>@System.Configuration.ConfigurationManager.AppSettings["Title"]</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-11">
+                <div class="panel panel-default logoPanel">
+                    <div class="panel-body logoPanelBody center-block">
+                        <img src="~/Images/logo.png" class="logo" width="100%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Jolt", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Services", "Services", "Home")</li>
+                    <li><a href="#contact" data-toggle="modal">Contact</a></li>
+                    <li>@Html.ActionLink("Gallery", "Gallery", "Home")</li>
+                    <li>@Html.ActionLink("Custom Signs", "Signs", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <div class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text">&copy; @DateTime.Now.Year - @System.Configuration.ConfigurationManager.AppSettings["Title"]</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Contact modal-->
+    <div class="modal fade" id="contact" role="dialog" name="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Contact JOLT LLC</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Email: joltcc@gmail.com<br>Phone: (618) 927-7155</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    @if (Request.Url.ToString().Contains("Gallery"))
+    {
+        @Scripts.Render("~/Scripts/gallerygrid.js")
+    }
+
+</body>
+</html>
