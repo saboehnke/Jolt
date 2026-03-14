@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="img/icon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOLT LLC — Precision Fabrication & Machine Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink:    #07070A;
+  --deep:   #0D0D10;
+  --plate:  #141418;
+  --iron:   #1E1E22;
+  --forge:  #282830;
+  --steel:  #50505A;
+  --chrome: #848490;
+  --bone:   #E4E0D8;
+  --cream:  #F0ECE4;
+  --brass:  #C2A45C;
+  --brass-l:#D8BA74;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--deep); color: var(--bone); font-family: "Barlow", sans-serif; overflow-x: hidden; }
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 9000;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+}
+
+/* ── NAV ── */
+#main-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px;
+  background: transparent;
+  transition: background .4s, border-color .4s;
+  border-bottom: 1px solid transparent;
+}
+#main-nav.scrolled {
+  background: rgba(7,7,10,0.93);
+  backdrop-filter: blur(18px);
+  border-bottom-color: rgba(194,164,92,0.10);
+}
+.nav-brand {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 900; font-size: 21px; letter-spacing: 7px;
+  color: var(--cream); text-decoration: none; text-transform: uppercase;
+}
+.nav-brand em { color: var(--brass); font-style: normal; }
+#main-nav ul { list-style: none; display: flex; gap: 44px; }
+#main-nav ul a {
+  color: rgba(228,224,216,0.60); text-decoration: none;
+  font-size: 11px; font-weight: 500; letter-spacing: 3.5px; text-transform: uppercase;
+  transition: color .2s;
+}
+#main-nav ul a:hover { color: var(--brass); }
+
+/* ══════════════════════════════════════
+   HERO — DIAGONAL SPLIT
+══════════════════════════════════════ */
+#hero {
+  position: relative;
+  height: 100vh; min-height: 620px;
+  display: flex; align-items: stretch;
+  overflow: hidden;
+}
+
+/* ── LEFT PANEL — text ── */
+.hero-left {
+  position: relative; z-index: 3;
+  width: 52%;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 100px 60px 80px;
+  background: #06060A;
+  /* The diagonal cut: right edge is a slanted clip */
+  clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+}
+
+/* dark metallic texture on left panel */
+.hero-left::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 59px,
+      rgba(194,164,92,0.022) 60px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 119px,
+      rgba(194,164,92,0.015) 120px
+    );
+  pointer-events: none;
+}
+
+/* ── RIGHT PANEL — logo image ── */
+.hero-right {
+  position: absolute;
+  inset: 0; left: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1C1C24;
+}
+
+.hero-right img {
+  width: 100%;
+  height: auto;
+  align-self: center;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 16%,
+    black 84%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 16%,
+    black 84%,
+    transparent 100%
+  );
+}
+
+/* Gradient feather on left edge of image panel — blends into text panel */
+.hero-right::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to right,
+    #06060A 0%,
+    rgba(6,6,10,0.92) 10%,
+    rgba(6,6,10,0.3) 30%,
+    transparent 55%
+  );
+  z-index: 1;
+}
+
+/* Darker vignette on top + bottom edges of image panel */
+.hero-right::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom,  rgba(7,7,10,0.88) 0%, rgba(7,7,10,0.4) 18%, transparent 35%, transparent 65%, rgba(7,7,10,0.5) 82%, rgba(7,7,10,0.92) 100%),
+    linear-gradient(to right,   transparent 60%, rgba(7,7,10,0.5) 100%);
+  z-index: 2;
+}
+
+/* ── HERO TEXT ── */
+.hero-text { position: relative; z-index: 2; max-width: 460px; }
+
+.hero-eyebrow {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 11px; letter-spacing: 5px; color: var(--brass);
+  text-transform: uppercase; margin-bottom: 22px;
+  display: flex; align-items: center; gap: 14px;
+  animation: fadeUp 1s .1s ease both;
+}
+.hero-eyebrow::before { content: ""; display: block; width: 28px; height: 1px; background: var(--brass); opacity: .55; }
+
+.hero-heading {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 900;
+  font-size: clamp(54px, 7.5vw, 112px);
+  line-height: 0.88; text-transform: uppercase;
+  color: var(--cream); letter-spacing: -2px;
+  margin-bottom: 24px;
+  animation: fadeUp 1s .25s ease both;
+}
+.hero-heading em { color: var(--brass); font-style: normal; }
+
+.hero-rule {
+  width: 56px; height: 2px;
+  background: linear-gradient(to right, var(--brass), transparent);
+  margin-bottom: 24px;
+  animation: fadeUp 1s .35s ease both;
+}
+
+.hero-sub {
+  font-size: 16px; font-weight: 300; color: var(--chrome);
+  line-height: 1.8; max-width: 380px;
+  margin-bottom: 36px;
+  animation: fadeUp 1s .45s ease both;
+}
+
+.hero-cta { display: flex; gap: 14px; animation: fadeUp 1s .55s ease both; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* Scroll indicator */
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 60px; z-index: 5;
+  display: flex; align-items: center; gap: 12px;
+  color: var(--steel); font-size: 9px; letter-spacing: 5px; text-transform: uppercase;
+  animation: breathe 3s ease-in-out infinite 2s;
+}
+.hero-scroll::after { content: ""; width: 40px; height: 1px; background: linear-gradient(to right, var(--steel), transparent); }
+@keyframes breathe { 0%,100%{opacity:.2} 50%{opacity:.65} }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block; padding: 14px 36px;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700; font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+  transition: transform .15s, background .2s, color .2s, border-color .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-solid  { background: var(--brass); color: var(--ink); }
+.btn-solid:hover { background: var(--brass-l); }
+.btn-outline { background: transparent; color: var(--bone); border: 1px solid var(--steel); }
+.btn-outline:hover { border-color: var(--brass); color: var(--brass); }
+
+/* ── RULE ── */
+.rule { height: 1px; background: linear-gradient(to right, transparent, rgba(194,164,92,0.25), transparent); }
+
+/* ── LAYOUT ── */
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 60px; }
+.sec-eyebrow {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 10px; letter-spacing: 4px; color: var(--brass); text-transform: uppercase;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 12px;
+}
+.sec-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--brass); opacity: .5; }
+.sec-title {
+  font-family: "Big Shoulders Display", sans-serif; font-weight: 900;
+  font-size: clamp(44px, 5.5vw, 74px); letter-spacing: -1px; line-height: 0.92;
+  text-transform: uppercase; color: var(--cream); margin-bottom: 28px;
+}
+.sec-title em { color: var(--brass); font-style: normal; }
+
+/* ── ABOUT ── */
+#about { padding: 116px 0; }
+#about .wrap { display: grid; grid-template-columns: 5fr 4fr; gap: 96px; align-items: center; }
+.about-body p { font-size: 17px; font-weight: 300; line-height: 1.9; color: var(--chrome); margin-bottom: 18px; }
+.about-body p strong { color: var(--bone); font-weight: 500; }
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.stat { background: var(--iron); padding: 30px 24px; position: relative; overflow: hidden; transition: background .25s; }
+.stat::before { content: ""; position: absolute; top:0; left:0; width:0; height:2px; background: var(--brass); transition: width .42s ease; }
+.stat:hover { background: var(--forge); }
+.stat:hover::before { width: 100%; }
+.stat-n { font-family: "Big Shoulders Display", sans-serif; font-weight: 900; font-size: 52px; line-height: 1; color: var(--brass); letter-spacing: -1px; }
+.stat-l { font-size: 10px; letter-spacing: 3px; color: var(--steel); text-transform: uppercase; margin-top: 5px; }
+
+/* ── SERVICES ── */
+#services { background: var(--plate); padding: 116px 0; }
+.services-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; }
+.services-note { max-width: 240px; font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--chrome); }
+.svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
+.svc { background: var(--iron); padding: 36px 28px; position: relative; overflow: hidden; transition: transform .2s; }
+.svc::before { content: ""; position: absolute; bottom:0; left:0; right:0; height:0; background: linear-gradient(to top, rgba(194,164,92,0.05), transparent); transition: height .4s; }
+.svc:hover { transform: translateY(-4px); }
+.svc:hover::before { height: 100%; }
+.svc:hover .svc-icon { filter: none; }
+.svc-icon { font-size: 26px; margin-bottom: 14px; display: block; filter: grayscale(1) brightness(1.8); transition: filter .3s; }
+.svc-name { font-family: "Big Shoulders Display", sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: var(--cream); margin-bottom: 12px; }
+.svc-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.svc-list li { font-size: 13px; font-weight: 300; color: var(--chrome); padding-left: 14px; position: relative; }
+.svc-list li::before { content: "—"; position: absolute; left: 0; color: var(--brass); font-size: 9px; top: 4px; }
+.svc.span2 { grid-column: span 2; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; }
+
+/* ── CONTACT ── */
+#contact { padding: 116px 0; }
+#contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
+.contact-links { margin-top: 36px; }
+.contact-row { display: flex; align-items: center; gap: 18px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); text-decoration: none; }
+.contact-row:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+.contact-row:hover .contact-row-val { color: var(--brass); }
+.contact-icon-box { width: 40px; height: 40px; flex-shrink: 0; background: rgba(194,164,92,0.07); border: 1px solid rgba(194,164,92,0.15); display: flex; align-items: center; justify-content: center; }
+.contact-icon-box svg { width: 16px; height: 16px; stroke: var(--brass); fill: none; stroke-width: 1.6; }
+.contact-row-sub { font-size: 10px; letter-spacing: 3px; color: var(--steel); text-transform: uppercase; margin-bottom: 3px; }
+.contact-row-val { font-size: 19px; font-weight: 500; color: var(--bone); transition: color .2s; }
+.contact-visual { display: flex; align-items: center; justify-content: center; }
+.xhair { position: relative; width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; }
+.xhair svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.xhair-center { position: relative; z-index: 2; text-align: center; }
+.xhair-n { font-family: "Big Shoulders Display", sans-serif; font-weight: 900; font-size: 64px; color: var(--brass); line-height: 1; letter-spacing: -2px; }
+.xhair-l { font-family: "Share Tech Mono", monospace; font-size: 9px; letter-spacing: 4px; color: var(--steel); text-transform: uppercase; margin-top: 4px; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); border-top: 1px solid rgba(194,164,92,0.08); padding: 34px 60px; display: flex; align-items: center; justify-content: space-between; }
+.foot-brand { font-family: "Big Shoulders Display", sans-serif; font-weight: 900; font-size: 18px; letter-spacing: 6px; text-transform: uppercase; color: var(--bone); }
+.foot-brand em { color: var(--brass); font-style: normal; }
+footer p { font-size: 11px; color: var(--steel); }
+.foot-nav ul { list-style: none; display: flex; gap: 28px; }
+.foot-nav ul a { color: var(--steel); text-decoration: none; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; transition: color .2s; }
+.foot-nav ul a:hover { color: var(--brass); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  #main-nav { padding: 0 24px; }
+  #main-nav ul { gap: 18px; }
+  #hero { flex-direction: column; height: auto; min-height: 100vh; }
+  .hero-left { width: 100%; clip-path: none; padding: 100px 24px 56px; }
+  .hero-right { position: relative; inset: auto; left: auto; height: 280px; width: 100%; }
+  .hero-right::before { background: linear-gradient(to bottom, #0D0D10 0%, transparent 30%, transparent 70%, #0D0D10 100%); }
+  .hero-scroll { left: 24px; }
+  #about .wrap, #contact .wrap { grid-template-columns: 1fr; gap: 48px; }
+  .services-top { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .svc.span2 { grid-column: span 1; grid-template-columns: 1fr; }
+  .contact-visual { display: none; }
+  .wrap { padding: 0 24px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+  .foot-nav ul { justify-content: center; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="#" class="nav-brand">JOLT <em>LLC</em></a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+
+  <!-- LEFT: text panel -->
+  <div class="hero-left">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Est. 2005 &nbsp;·&nbsp; Fabrication &amp; Machine Shop</p>
+      <h1 class="hero-heading">Precision<br><em>Fabrication</em><br>&amp; Machining</h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">Over 50 years of combined experience serving coal mining, automotive, and agriculture industries.</p>
+      <div class="hero-cta">
+        <a href="#services" class="btn btn-solid">Our Services</a>
+        <a href="#contact"  class="btn btn-outline">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: logo image panel -->
+  <div class="hero-right">
+    <img src="img/logo.png" alt="JOLT LLC — precision fabrication logo" />
+  </div>
+
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-body">
+      <p class="sec-eyebrow">Who We Are</p>
+      <h2 class="sec-title">Built from<br><em>the ground</em><br>up</h2>
+      <p><strong>JOLT was established in 2005</strong> as JOLT CAD &amp; Consulting by Tim Vanwey — delivering machine design, reverse engineering, CAD/CAM, and consulting services.</p>
+      <p>In 2010 we expanded into <strong>JOLT LLC</strong>, a full-service fabrication and machine shop. We've continued to grow in both technology and capability ever since.</p>
+      <p>Our team brings over <strong>50 years of combined experience</strong> in machining and fabrication, serving coal mining, automotive, and agriculture industries.</p>
+      <div style="margin-top:36px;"><a href="#contact" class="btn btn-solid">Work With Us</a></div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-n">2005</div><div class="stat-l">Founded</div></div>
+      <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Years Combined Exp.</div></div>
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Industries Served</div></div>
+      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">In-House Capability</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section id="services">
+  <div class="wrap">
+    <div class="services-top">
+      <div>
+        <p class="sec-eyebrow">What We Do</p>
+        <h2 class="sec-title">Services</h2>
+      </div>
+      <p class="services-note">From raw stock to finished part — every job gets our full attention and expertise.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><span class="svc-icon">🔥</span><div class="svc-name">Welding</div><ul class="svc-list"><li>Aluminum</li><li>Stainless Steel</li><li>Mild Steel</li></ul></div>
+      <div class="svc"><span class="svc-icon">⚙️</span><div class="svc-name">Machine Fabrication</div><ul class="svc-list"><li>Small Parts</li><li>Automation Machines</li><li>Fixturing</li></ul></div>
+      <div class="svc"><span class="svc-icon">🖥️</span><div class="svc-name">CAD / CAM</div><ul class="svc-list"><li>SolidWorks</li><li>AutoCAD</li><li>MasterCAM</li></ul></div>
+      <div class="svc"><span class="svc-icon">🔩</span><div class="svc-name">Conventional Machine</div><ul class="svc-list"><li>Lathe — 15″ dia × 40″</li><li>Mill — 9″ × 30″</li></ul></div>
+      <div class="svc"><span class="svc-icon">🤖</span><div class="svc-name">CNC Machine</div><ul class="svc-list"><li>Lathe — 12″ dia × 30″</li><li>Mill — 20″ × 30″</li></ul></div>
+      <div class="svc"><span class="svc-icon">🎨</span><div class="svc-name">Painting</div><ul class="svc-list"><li>20′ × 30′ Paint Booth</li><li>Industrial Coatings</li></ul></div>
+      <div class="svc span2">
+        <div><span class="svc-icon">🔧</span><div class="svc-name">Rebuild &amp; Heat Treat</div></div>
+        <ul class="svc-list" style="columns:2;gap:24px;">
+          <li>Cylinder Rebuild</li><li>Machinery Rebuild</li>
+          <li>Small Parts</li><li>Heat Treatment</li>
+          <li>Repair &amp; Restoration</li><li>Engineering Changes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="wrap">
+    <div>
+      <p class="sec-eyebrow">Reach Out</p>
+      <h2 class="sec-title">Let's build<br><em>something</em><br>together</h2>
+      <div class="contact-links">
+        <a href="tel:6189277155" class="contact-row">
+          <div class="contact-icon-box"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.91-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="contact-row-sub">Phone</div><div class="contact-row-val">(618) 927-7155</div></div>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#553f3a39213636153238343c397b363a38" class="contact-row">
+          <div class="contact-icon-box"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="contact-row-sub">Email</div><div class="contact-row-val"><span class="__cf_email__" data-cfemail="dbb1b4b7afb8b89bbcb6bab2b7f5b8b4b6">[email&#160;protected]</span></div></div>
+        </a>
+      </div>
+      <div style="margin-top:40px;"><a href="/cdn-cgi/l/email-protection#d0babfbca4b3b390b7bdb1b9bcfeb3bfbd" class="btn btn-solid">Request a Quote</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="foot-brand">JOLT <em>LLC</em></div>
+  <p>© 2025 JOLT LLC &nbsp;·&nbsp; All Rights Reserved</p>
+  <div class="foot-nav">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/sc
