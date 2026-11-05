@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JOLT LLC — Precision Fabrication & Machine Shop</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=Share+Tech+Mono&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -81,26 +81,6 @@ body::after {
   clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
 }
 
-/* dark metallic texture on left panel */
-.hero-left::before {
-  content: "";
-  position: absolute; inset: 0;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 59px,
-      rgba(194,164,92,0.022) 60px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 119px,
-      rgba(194,164,92,0.015) 120px
-    );
-  pointer-events: none;
-}
-
 /* ── RIGHT PANEL — logo image ── */
 .hero-right {
   position: absolute;
@@ -156,58 +136,20 @@ body::after {
 }
 
 /* ── HERO TEXT ── */
-.hero-text { position: relative; z-index: 2; max-width: 460px; }
-
-.hero-eyebrow {
-  font-family: "Share Tech Mono", monospace;
-  font-size: 11px; letter-spacing: 5px; color: var(--brass);
-  text-transform: uppercase; margin-bottom: 22px;
-  display: flex; align-items: center; gap: 14px;
-  animation: fadeUp 1s .1s ease both;
-}
-.hero-eyebrow::before { content: ""; display: block; width: 28px; height: 1px; background: var(--brass); opacity: .55; }
-
+.hero-text { position: relative; z-index: 2; max-width: 520px; }
 .hero-heading {
   font-family: "Big Shoulders Display", sans-serif;
   font-weight: 900;
   font-size: clamp(54px, 7.5vw, 112px);
   line-height: 0.88; text-transform: uppercase;
   color: var(--cream); letter-spacing: -2px;
-  margin-bottom: 24px;
-  animation: fadeUp 1s .25s ease both;
+  margin-bottom: 28px;
 }
 .hero-heading em { color: var(--brass); font-style: normal; }
-
-.hero-rule {
-  width: 56px; height: 2px;
-  background: linear-gradient(to right, var(--brass), transparent);
-  margin-bottom: 24px;
-  animation: fadeUp 1s .35s ease both;
-}
-
-.hero-sub {
-  font-size: 16px; font-weight: 300; color: var(--chrome);
-  line-height: 1.8; max-width: 380px;
-  margin-bottom: 36px;
-  animation: fadeUp 1s .45s ease both;
-}
-
-.hero-cta { display: flex; gap: 14px; animation: fadeUp 1s .55s ease both; }
-
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(18px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-
-/* Scroll indicator */
-.hero-scroll {
-  position: absolute; bottom: 28px; left: 60px; z-index: 5;
-  display: flex; align-items: center; gap: 12px;
-  color: var(--steel); font-size: 9px; letter-spacing: 5px; text-transform: uppercase;
-  animation: breathe 3s ease-in-out infinite 2s;
-}
-.hero-scroll::after { content: ""; width: 40px; height: 1px; background: linear-gradient(to right, var(--steel), transparent); }
-@keyframes breathe { 0%,100%{opacity:.2} 50%{opacity:.65} }
+.hero-sub { font-size: 16px; font-weight: 300; color: var(--chrome); line-height: 1.8; max-width: 380px; margin-bottom: 36px; }
+.hero-cta { display: flex; gap: 14px; }
+.text-link { color: var(--bone); font-size: 15px; font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--steel); padding-bottom: 2px; transition: color .2s, border-color .2s; }
+.text-link:hover { color: var(--brass); border-color: var(--brass); }
 
 /* ── BUTTONS ── */
 .btn {
@@ -225,7 +167,7 @@ body::after {
 .btn-outline:hover { border-color: var(--brass); color: var(--brass); }
 
 /* ── RULE ── */
-.rule { height: 1px; background: linear-gradient(to right, transparent, rgba(194,164,92,0.25), transparent); }
+.rule { height: 1px; background: rgba(255,255,255,0.07); }
 
 /* ── LAYOUT ── */
 .wrap { max-width: 1240px; margin: 0 auto; padding: 0 60px; }
@@ -242,36 +184,40 @@ body::after {
 }
 .sec-title em { color: var(--brass); font-style: normal; }
 
-/* ── ABOUT ── */
-#about { padding: 116px 0; }
-#about .wrap { display: grid; grid-template-columns: 5fr 4fr; gap: 96px; align-items: center; }
-.about-body p { font-size: 17px; font-weight: 300; line-height: 1.9; color: var(--chrome); margin-bottom: 18px; }
-.about-body p strong { color: var(--bone); font-weight: 500; }
+.h2 { font-family: "Big Shoulders Display", sans-serif; font-weight: 900; font-size: clamp(40px, 4.5vw, 56px); line-height: 1; text-transform: uppercase; color: var(--cream); margin-bottom: 24px; }
+.h3 { font-family: "Big Shoulders Display", sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 1px; text-transform: uppercase; color: var(--cream); margin-bottom: 18px; }
 
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
-.stat { background: var(--iron); padding: 30px 24px; position: relative; overflow: hidden; transition: background .25s; }
-.stat::before { content: ""; position: absolute; top:0; left:0; width:0; height:2px; background: var(--brass); transition: width .42s ease; }
-.stat:hover { background: var(--forge); }
-.stat:hover::before { width: 100%; }
-.stat-n { font-family: "Big Shoulders Display", sans-serif; font-weight: 900; font-size: 52px; line-height: 1; color: var(--brass); letter-spacing: -1px; }
-.stat-l { font-size: 10px; letter-spacing: 3px; color: var(--steel); text-transform: uppercase; margin-top: 5px; }
+/* ── ABOUT ── */
+#about { padding: 104px 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.about-photo img { display: block; width: 100%; height: auto; }
+.about-photo figcaption { font-size: 13px; color: var(--steel); margin-top: 10px; }
+.about-text p { font-size: 17px; line-height: 1.75; color: var(--chrome); margin-bottom: 18px; max-width: 540px; }
+.plate { margin: 32px 0 34px; border: 1px solid rgba(194,164,92,0.35); max-width: 540px; }
+.plate div { display: grid; grid-template-columns: 130px 1fr; border-top: 1px solid rgba(194,164,92,0.18); }
+.plate div:first-child { border-top: none; }
+.plate dt, .plate dd { padding: 12px 16px; font-family: "IBM Plex Mono", monospace; font-size: 13px; }
+.plate dt { color: var(--brass); text-transform: uppercase; letter-spacing: 1px; border-right: 1px solid rgba(194,164,92,0.18); }
+.plate dd { color: var(--bone); }
 
 /* ── SERVICES ── */
-#services { background: var(--plate); padding: 116px 0; }
-.services-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; }
-.services-note { max-width: 240px; font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--chrome); }
-.svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
-.svc { background: var(--iron); padding: 36px 28px; position: relative; overflow: hidden; transition: transform .2s; }
-.svc::before { content: ""; position: absolute; bottom:0; left:0; right:0; height:0; background: linear-gradient(to top, rgba(194,164,92,0.05), transparent); transition: height .4s; }
-.svc:hover { transform: translateY(-4px); }
-.svc:hover::before { height: 100%; }
-.svc:hover .svc-icon { filter: none; }
-.svc-icon { font-size: 26px; margin-bottom: 14px; display: block; filter: grayscale(1) brightness(1.8); transition: filter .3s; }
-.svc-name { font-family: "Big Shoulders Display", sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: var(--cream); margin-bottom: 12px; }
-.svc-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
-.svc-list li { font-size: 13px; font-weight: 300; color: var(--chrome); padding-left: 14px; position: relative; }
-.svc-list li::before { content: "—"; position: absolute; left: 0; color: var(--brass); font-size: 9px; top: 4px; }
-.svc.span2 { grid-column: span 2; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; }
+#services { background: var(--plate); padding: 104px 0; }
+.svc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 40px; margin-bottom: 8px; }
+.svc-head p { font-size: 16px; color: var(--chrome); max-width: 360px; line-height: 1.6; }
+.svc-table { width: 100%; border-collapse: collapse; margin-bottom: 88px; }
+.svc-table tr { border-bottom: 1px solid rgba(255,255,255,0.07); }
+.svc-table th, .svc-table td { text-align: left; vertical-align: baseline; padding: 20px 0; }
+.svc-table thead th { font-family: "IBM Plex Mono", monospace; font-weight: 400; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--steel); padding: 14px 0; }
+.svc-table thead tr { border-bottom: 1px solid rgba(255,255,255,0.18); }
+.svc-table tbody th { width: 30%; font-family: "Big Shoulders Display", sans-serif; font-weight: 700; font-size: 22px; letter-spacing: .5px; text-transform: uppercase; color: var(--cream); padding-right: 24px; }
+.svc-table td { font-size: 16px; color: var(--chrome); line-height: 1.55; padding-right: 24px; }
+.svc-table td.cap { width: 26%; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--bone); padding-right: 0; }
+.svc-table a { color: var(--brass); text-decoration: none; border-bottom: 1px solid rgba(194,164,92,0.4); }
+.svc-table a:hover { border-color: var(--brass); }
+.svc-table a.sign-btn { color: var(--ink); border: none; padding: 12px 28px; }
+.svc-table a.sign-btn:hover { background: var(--brass-l); }
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.gallery img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 
 /* ── CONTACT ── */
 #contact { padding: 116px 0; }
@@ -308,11 +254,15 @@ footer p { font-size: 11px; color: var(--steel); }
   .hero-left { width: 100%; clip-path: none; padding: 100px 24px 56px; }
   .hero-right { position: relative; inset: auto; left: auto; height: 280px; width: 100%; }
   .hero-right::before { background: linear-gradient(to bottom, #0D0D10 0%, transparent 30%, transparent 70%, #0D0D10 100%); }
-  .hero-scroll { left: 24px; }
-  #about .wrap, #contact .wrap { grid-template-columns: 1fr; gap: 48px; }
-  .services-top { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .svc-grid { grid-template-columns: 1fr; }
-  .svc.span2 { grid-column: span 1; grid-template-columns: 1fr; }
+  .about-grid, #contact .wrap { grid-template-columns: 1fr; gap: 48px; }
+  .svc-head { flex-direction: column; gap: 0; margin-bottom: 16px; }
+  .svc-table thead { display: none; }
+  .svc-table tr { display: block; padding: 18px 0; }
+  .svc-table th, .svc-table td, .svc-table td.cap { display: block; width: auto; padding: 0; }
+  .svc-table tbody th { margin-bottom: 6px; }
+  .svc-table td.cap { margin-top: 6px; }
+  .svc-table a.sign-btn { margin-top: 10px; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
   .contact-visual { display: none; }
   .wrap { padding: 0 24px; }
   footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
@@ -337,9 +287,7 @@ footer p { font-size: 11px; color: var(--steel); }
   <!-- LEFT: text panel -->
   <div class="hero-left">
     <div class="hero-text">
-      <p class="hero-eyebrow">Est. 2005 &nbsp;·&nbsp; Fabrication &amp; Machine Shop</p>
       <h1 class="hero-heading">Precision<br><em>Fabrication</em><br>&amp; Machining</h1>
-      <div class="hero-rule"></div>
       <p class="hero-sub">Over 50 years of combined experience serving coal mining, automotive, and agriculture industries.</p>
       <div class="hero-cta">
         <a href="#services" class="btn btn-solid">Our Services</a>
@@ -352,28 +300,28 @@ footer p { font-size: 11px; color: var(--steel); }
   <div class="hero-right">
     <img src="img/logo.png" alt="JOLT LLC — precision fabrication logo" />
   </div>
-
-  <div class="hero-scroll">Scroll</div>
 </section>
 
 <div class="rule"></div>
 
 <!-- ═══════════ ABOUT ═══════════ -->
 <section id="about">
-  <div class="wrap">
-    <div class="about-body">
-      <p class="sec-eyebrow">Who We Are</p>
-      <h2 class="sec-title">Built from<br><em>the ground</em><br>up</h2>
-      <p><strong>JOLT was established in 2005</strong> as JOLT CAD &amp; Consulting by Tim Vanwey — delivering machine design, reverse engineering, CAD/CAM, and consulting services.</p>
-      <p>In 2010 we expanded into <strong>JOLT LLC</strong>, a full-service fabrication and machine shop. We've continued to grow in both technology and capability ever since.</p>
-      <p>Our team brings over <strong>50 years of combined experience</strong> in machining and fabrication, serving coal mining, automotive, and agriculture industries.</p>
-      <div style="margin-top:36px;"><a href="#contact" class="btn btn-solid">Work With Us</a></div>
-    </div>
-    <div class="stats-grid">
-      <div class="stat"><div class="stat-n">2005</div><div class="stat-l">Founded</div></div>
-      <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Years Combined Exp.</div></div>
-      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Industries Served</div></div>
-      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">In-House Capability</div></div>
+  <div class="wrap about-grid">
+    <figure class="about-photo">
+      <img src="img/image4.jpg" alt="Fabrication table on the JOLT shop floor" />
+      <figcaption>A frame on the table in our shop.</figcaption>
+    </figure>
+    <div class="about-text">
+      <h2 class="h2">About the shop</h2>
+      <p>Tim Vanwey started JOLT in 2005 as JOLT CAD &amp; Consulting, doing machine design, reverse engineering, CAD/CAM, and consulting work.</p>
+      <p>In 2010 it became JOLT LLC, a full fabrication and machine shop. Our crew has over 50 years of combined experience in machining and fabrication, mostly for coal mining, automotive, and agriculture customers.</p>
+      <dl class="plate">
+        <div><dt>Founded</dt><dd>2005</dd></div>
+        <div><dt>Founder</dt><dd>Tim Vanwey</dd></div>
+        <div><dt>Industries</dt><dd>Coal mining, automotive, agriculture</dd></div>
+        <div><dt>In-house</dt><dd>Design, machining, welding, paint</dd></div>
+      </dl>
+      <a href="#contact" class="text-link">Talk to us about a job</a>
     </div>
   </div>
 </section>
@@ -383,28 +331,34 @@ footer p { font-size: 11px; color: var(--steel); }
 <!-- ═══════════ SERVICES ═══════════ -->
 <section id="services">
   <div class="wrap">
-    <div class="services-top">
-      <div>
-        <p class="sec-eyebrow">What We Do</p>
-        <h2 class="sec-title">Services</h2>
-      </div>
-      <p class="services-note">From raw stock to finished part — every job gets our full attention and expertise.</p>
+    <div class="svc-head">
+      <h2 class="h2">Services</h2>
+      <p>Send us a drawing, a sample part, or just describe the problem and we'll quote it.</p>
     </div>
-    <div class="svc-grid">
-      <div class="svc"><span class="svc-icon">🔥</span><div class="svc-name">Welding</div><ul class="svc-list"><li>Aluminum</li><li>Stainless Steel</li><li>Mild Steel</li></ul></div>
-      <div class="svc"><span class="svc-icon">⚙️</span><div class="svc-name">Machine Fabrication</div><ul class="svc-list"><li>Small Parts</li><li>Automation Machines</li><li>Fixturing</li></ul></div>
-      <div class="svc"><span class="svc-icon">🖥️</span><div class="svc-name">CAD / CAM</div><ul class="svc-list"><li>SolidWorks</li><li>AutoCAD</li><li>MasterCAM</li></ul></div>
-      <div class="svc"><span class="svc-icon">🔩</span><div class="svc-name">Conventional Machine</div><ul class="svc-list"><li>Lathe — 15″ dia × 40″</li><li>Mill — 9″ × 30″</li></ul></div>
-      <div class="svc"><span class="svc-icon">🤖</span><div class="svc-name">CNC Machine</div><ul class="svc-list"><li>Lathe — 12″ dia × 30″</li><li>Mill — 20″ × 30″</li></ul></div>
-      <div class="svc"><span class="svc-icon">🎨</span><div class="svc-name">Painting</div><ul class="svc-list"><li>20′ × 30′ Paint Booth</li><li>Industrial Coatings</li></ul></div>
-      <div class="svc span2">
-        <div><span class="svc-icon">🔧</span><div class="svc-name">Rebuild &amp; Heat Treat</div></div>
-        <ul class="svc-list" style="columns:2;gap:24px;">
-          <li>Cylinder Rebuild</li><li>Machinery Rebuild</li>
-          <li>Small Parts</li><li>Heat Treatment</li>
-          <li>Repair &amp; Restoration</li><li>Engineering Changes</li>
-        </ul>
-      </div>
+    <table class="svc-table">
+      <thead><tr><th>Service</th><th>What we do</th><th>Capacity</th></tr></thead>
+      <tbody>
+        <tr><th>Welding</th><td>Aluminum, stainless steel, mild steel</td><td class="cap"></td></tr>
+        <tr><th>Machine fabrication</th><td>Small parts, automation machines, fixturing</td><td class="cap"></td></tr>
+        <tr><th>CAD / CAM</th><td>SolidWorks, AutoCAD, MasterCAM</td><td class="cap"></td></tr>
+        <tr><th>CNC machining</th><td>Lathe and mill work</td><td class="cap">Lathe 12&Prime; dia &times; 30&Prime;<br>Mill 20&Prime; &times; 30&Prime;</td></tr>
+        <tr><th>Conventional machining</th><td>Manual lathe and mill work</td><td class="cap">Lathe 15&Prime; dia &times; 40&Prime;<br>Mill 9&Prime; &times; 30&Prime;</td></tr>
+        <tr><th>Painting</th><td>Industrial coatings</td><td class="cap">20&prime; &times; 30&prime; paint booth</td></tr>
+        <tr><th>Rebuild &amp; heat treat</th><td>Cylinder and machinery rebuilds, small parts, heat treatment, repair and restoration, engineering changes</td><td class="cap"></td></tr>
+        <tr><th>Sign fabrication</th><td>Custom metal signs, cut and finished in our shop. Design your sign online with our Burntable sign builder and we'll make it for you.</td><td class="cap"><a class="btn btn-solid sign-btn" href="https://burntable.net/s/jolt-llc" target="_blank" rel="noopener">Design Your Sign&nbsp;&#8599;</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="h3">Recent work</h3>
+    <div class="gallery">
+      <img src="img/image6.jpg" alt="Blue and orange automation machine outside the shop" loading="lazy" />
+      <img src="img/image13.jpg" alt="Automation machine being assembled" loading="lazy" />
+      <img src="img/image9.jpg" alt="Machined steel rollers" loading="lazy" />
+      <img src="img/image14.jpg" alt="Stainless steel hopper" loading="lazy" />
+      <img src="img/image3.jpg" alt="Close-up of an orange fixture plate with pneumatic fittings" loading="lazy" />
+      <img src="img/image7.jpg" alt="Machined steel blocks on a pallet" loading="lazy" />
+      <img src="img/image15.jpg" alt="Blue fabricated arm assembly" loading="lazy" />
+      <img src="img/image12.jpg" alt="Machined bevel gears" loading="lazy" />
     </div>
   </div>
 </section>
@@ -445,4 +399,11 @@ footer p { font-size: 11px; color: var(--steel); }
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/sc
+<script>
+  const nav = document.getElementById("main-nav");
+  const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+</script>
+</body>
+</html>
